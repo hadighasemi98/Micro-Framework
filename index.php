@@ -1,5 +1,6 @@
 <?php
 
+use App\Core\SimpleRouter;
 use App\Utilities\Assets;
 use App\Utilities\Url;
 
@@ -17,16 +18,7 @@ include "Bootstrap/init.php";
 // echo Assets::get("JS/bootstrap.js");
 
 # Router
-$route = Url::current_route();
+// $route = Url::current_route();
 
-if ($route == "/color/red")
-    include BASE_PATH . "Views/html/red.php"  ;
-
-if ($route == "/color/green")
-    include BASE_PATH . "Views/html/green.php"  ;
-
-if ($route == "/color/blue")
-    include BASE_PATH . "Views/html/blue.php"  ;
-
-
-
+$Router = new SimpleRouter();
+$Router->run();
