@@ -3,6 +3,7 @@
 use App\Core\SimpleRouter;
 use App\Utilities\Assets;
 use App\Utilities\Url;
+use App\Core\Request;
 
 include "Bootstrap/init.php";
 // echo $_SERVER['REQUEST_URI'];
@@ -20,5 +21,9 @@ include "Bootstrap/init.php";
 # Router
 // $route = Url::current_route();
 
-$Router = new SimpleRouter();
-$Router->run();
+// $Router = new SimpleRouter();
+// $Router->run();
+
+$request = new Request();
+    
+echo($request->name ) ;
