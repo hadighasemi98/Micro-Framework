@@ -7,29 +7,20 @@ class Request {
 
     private $agent ;
     private $ip ;
+    private $uri ;
     private $params ;
+    private $method ;
 
  
     public function __construct()
     {
-        $this->agent = $_SERVER['HTTP_USER_AGENT'] ;
-        $this->ip    = $_SERVER['SERVER_ADDR'];  ;
+        $this->agent  = $_SERVER['HTTP_USER_AGENT'] ;
+        $this->ip     = $_SERVER['SERVER_ADDR'];  ;
+        $this->uri    = strtok($_SERVER['REQUEST_URI'] , '?') ;
         $this->params = $_REQUEST ;
+        $this->method = strtolower($_SERVER['REQUEST_METHOD']) ;
     }
-    
-    // public function __get($param)
-    // {
 
-    //     $url = $_SERVER['REQUEST_URI'] ;
-        
-    //     $url_components = parse_url($url) ;
-        
-    //     parse_str($url_components['query'], $params) ;
-        
-    //     // Display result
-    //     return $params[$param] ;
-
-    // }
 
     public function __get(string $param)
     {
@@ -54,23 +45,19 @@ class Request {
         
     }
 
-    public function parse_str($params)
+    public function get_uri()
     {
-        // Initialize URL to the variable
-        $url = $_SERVER['REQUEST_URI'] ;
+        return $this->uri ;
         
-        // Use parse_url() function to parse the URL
-        // and return an associative array which
-        // contains its various components
-        $url_components = parse_url($url) ;
-        
-        // Use parse_str() function to parse the
-        // string passed via URL
-        parse_str($url_components['query'], $params) ;
-        
-        // Display result
-        echo ' Hi '.$params['type'] ;
     }
+
+    public function get_method()
+    {
+        return $this->method ;
+        
+    }
+
+
 }
 
 

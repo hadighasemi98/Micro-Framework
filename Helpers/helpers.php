@@ -13,4 +13,9 @@ function random_element($arr){
     return array_pop($arr);
 }
 
+function view($path){ 
+
+    include BASE_PATH . "Views/" . $path . ".php";
+
+}
 
