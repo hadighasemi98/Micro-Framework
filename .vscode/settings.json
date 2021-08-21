@@ -1,6 +1,14 @@
 {
     "cSpell.ignoreWords": [
+        "as",
+        "browser",
         "clousure",
-        "laravel"
+        "detect",
+        "hisorange",
+        "laravel",
+        "middlewares",
+        "parser",
+        "use",
+        "use hisorange browser detect parser as"
     ]
 }
