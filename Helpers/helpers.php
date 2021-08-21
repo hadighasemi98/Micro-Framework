@@ -13,8 +13,9 @@ function random_element($arr){
     return array_pop($arr);
 }
 
-function view($path){ 
-
+function view($path,$data){ 
+    // $arr = [1,2,3,45,6];
+    extract($data);
     include BASE_PATH . "Views/" . $path . ".php";
 
 }

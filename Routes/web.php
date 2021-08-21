@@ -6,9 +6,9 @@ use App\Core\Routing\Route;
 
 Route::get("/null"); // Inspired of Laravel
 
-Route::get("/"); // Inspired of Laravel
+Route::post("/",function(){echo "welcome" ; }); // Inspired of Laravel
 
-Route::post("/home" ,function(){echo "welcome" ; }); // Inspired of Laravel
+Route::get("/home" ,"HomeController@index"); // Inspired of Laravel
 
 Route::get("/blue" ,"HomeController@index" ); // Inspired of Laravel
 

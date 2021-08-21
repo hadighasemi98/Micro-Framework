@@ -6,7 +6,11 @@ class HomeController{
 
     public function index()
     {
-        view("html/blue");
+        $data = [
+            "title" => "Home page" ,
+            "FirstPost" => "Hello world !" 
+        ];        
+        view("html/index",$data);
     }
     
 }
