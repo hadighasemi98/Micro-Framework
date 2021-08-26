@@ -1,6 +1,9 @@
 <?php
 namespace App\Core;
 
+use App\Middlewares\GlobalMiddleware;
+use hisorange\BrowserDetect\Parser as Browser;
+
 // use App\Utilities\Url;
 
 class Request {
@@ -15,7 +18,7 @@ class Request {
     public function __construct()
     {
         $this->agent  = $_SERVER['HTTP_USER_AGENT'] ;
-        $this->ip     = $_SERVER['SERVER_ADDR'];  ;
+        $this->ip     = $_SERVER['SERVER_ADDR'];
         $this->uri    = strtok($_SERVER['REQUEST_URI'] , '?') ;
         $this->params = $_REQUEST ;
         $this->method = strtolower($_SERVER['REQUEST_METHOD']) ;
@@ -34,7 +37,7 @@ class Request {
         return $this->agent ;
     }
 
-    public function get_ip()
+    public function get_ip ()
     {
         return $this->ip ;
     }

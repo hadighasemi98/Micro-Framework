@@ -3,15 +3,16 @@
 use App\Core\Routing\Route;
 use App\Middlewares\BlockFireFox;
 use App\Middlewares\BlockIE;
+use App\Middlewares\GlobalMiddleware;
 
-// include "vendor/autoload.php";
+# Inspired of Laravel
 
-Route::get("/null"); // Inspired of Laravel
+Route::get("/null"); 
 
-Route::post("/",function(){echo "welcome"; } ); 
+Route::get("/",function(){echo "welcome"; }  )  ; 
 
-Route::get("/home" ,"HomeController@index",[BlockFireFox::class,BlockIE::class]); 
+Route::get("/home" ,"HomeController@index", [BlockFireFox::class,BlockIE::class]); 
 
-Route::get("/blue" ,"HomeController@index" ); 
+Route::get("/blue" ,"BlueController@index" ); 
 
 Route::put("/last-posts" ,"LastsController@get" ); 

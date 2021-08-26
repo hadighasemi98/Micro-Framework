@@ -1,5 +1,6 @@
 <?php
 
+use App\Core\Request;
 use App\Core\Routing\Router;
 use App\Core\Routing\Route;
 
@@ -23,7 +24,8 @@ include "Bootstrap/init.php";
 // $Router->run();
 
 // $request = new Request();
-// echo($request->name ) ;
+// echo($request->get_ip() ) ;
+// var_dump ($_SERVER) ;
 
 // var_dump(Route::routes());
 

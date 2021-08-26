@@ -2,6 +2,8 @@
 namespace App\Core\Routing;
 
 use Exception;
+use hisorange\BrowserDetect\Parser as Browser;
+
 
 class Route {
 

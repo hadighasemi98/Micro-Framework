@@ -2,15 +2,15 @@
 
 namespace App\Controllers ;
 
-class HomeController{
+class BlueController{
 
     public function index()
     {
         $data = [
-            "title" => "Home page" ,
+            "title" => "Blue page" ,
             "FirstPost" => "Hello world 2!" 
         ];        
-        view("html/index",$data);
+        view("html/blue",$data);
     }
     
 }

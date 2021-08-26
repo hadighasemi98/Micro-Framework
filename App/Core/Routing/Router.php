@@ -2,6 +2,7 @@
 namespace App\Core\Routing;
 
 use App\Core\Request;
+use App\Middlewares\GlobalMiddleware;
 use Exception;
 
 class Router {
@@ -18,18 +19,27 @@ class Router {
         // var_dump( $this->current_route);
 
         # Middleware
+        // $this->run_global_middleware() ;
         $this->run_middleware() ;
     }
-    private function run_middleware(){
-        $middleware = $this->current_route['middleware'];
 
-        foreach ($middleware as $middleware_class) {
-            // if (class_exists($middleware_class)) {
+
+    private function run_global_middleware(){
+
+        $global_middlewares = new GlobalMiddleware();
+
+        $global_middlewares->handle() ;
+    }
+
+    private function run_middleware(){
+        $middleware = $this->current_route['middleware'] ;
+
+        if (!is_null($middleware)) {
+            foreach ($middleware as $middleware_class) {
                 $class = new $middleware_class ;
                 $class->handle() ;
-            // }
+            }
         }
-        // var_dump( $this->current_route);
     }
     
     public function findRoute($request)
@@ -45,7 +55,6 @@ class Router {
             }
         }
         return null;
-
     }
 
     public function invalidMethod($request){ 
@@ -125,6 +134,7 @@ class Router {
 
     public function run()
     {
+
         # Error 404
         $this->invalidUri($this->request);
 
