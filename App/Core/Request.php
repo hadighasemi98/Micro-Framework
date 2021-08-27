@@ -12,6 +12,7 @@ class Request {
     private $ip ;
     private $uri ;
     private $params ;
+    private $route_params ;
     private $method ;
 
  
@@ -48,6 +49,18 @@ class Request {
         
     }
 
+    # Create SEO friendly routes
+    public function add_route_param($key , $value)
+    {
+        return $this->route_params[$key] = $value ;
+    }
+
+    public function get_route_param($key)
+    {
+        return $this->route_params[$key] ;
+    }
+
+    
     public function get_uri()
     {
         return $this->uri ;

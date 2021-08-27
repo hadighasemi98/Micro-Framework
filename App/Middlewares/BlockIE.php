@@ -9,8 +9,8 @@ class BlockIE implements MiddlewareInterface {
 
     public function handle()
     {    
-        Browser::isIE() ? die('IE was Blocked ! use another IDE') : null ;
-        // echo"BlockIE"."<br>";
+        // Browser::isIE() ? die('IE was Blocked ! use another IDE') : null ;
+        echo "BlockIE"."<br>";
 
     }
 

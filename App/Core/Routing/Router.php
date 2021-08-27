@@ -13,12 +13,13 @@ class Router {
 
     public function __construct()
     { 
-        $this->request = new Request();
+        global $request;
+        $this->request = $request;
         $this->routes = Route::routes() ;
         $this->current_route = $this->findRoute($this->request);
         // var_dump( $this->current_route);
 
-        # Middleware
+        # Middlewares
         // $this->run_global_middleware() ;
         $this->run_middleware() ;
     }
@@ -32,7 +33,7 @@ class Router {
     }
 
     private function run_middleware(){
-        $middleware = $this->current_route['middleware'] ;
+        $middleware = $this->current_route['middleware'] ?? null ;
 
         if (!is_null($middleware)) {
             foreach ($middleware as $middleware_class) {
@@ -42,20 +43,42 @@ class Router {
         }
     }
     
-    public function findRoute($request)
+    public function findRoute(Request $request)
     {
         // echo $request->get_uri() . "-" . $request->get_method();
 
         foreach($this->routes as $route){
 
-            if( in_array( $request->get_method() , $route['method'] ) 
-                and $request->get_uri() == $route['uri'] )
+            if ( !in_array( $request->get_method() , $route['method'] ) )
             {
+                return false ;
+            }
+            if ( $this->regex_matched($route) ){
                 return $route ;
             }
         }
         return null;
     }
+
+    public function regex_matched($route){
+
+        $route_pattern = " /^".str_replace(["/","{","}"],["\/","(?<",">[-%\w+]+)"],$route['uri'])."$/ ";
+        $uri = $this->request->get_uri();
+        $result = preg_match($route_pattern , $uri ,$matches) ;
+
+        if(!$result){
+            return false ;
+        }
+         foreach($matches as $key => $value){
+             if (!is_int($key)) {
+                $this->request->add_route_param($key , $value); 
+             }
+         }
+        // $this->request->hadi = "hadi";
+        // var_dump($this->request->slug );
+
+        return true ;
+     }
 
     public function invalidMethod($request){ 
 
@@ -73,7 +96,7 @@ class Router {
 
         foreach($this->routes as $route){
 
-            if( ($uri->get_uri() == $route['uri']) )
+            if( ($uri->get_uri() == $this->regex_matched($route)) )
             {
                 return $route ;
             }

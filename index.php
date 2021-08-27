@@ -31,3 +31,14 @@ include "Bootstrap/init.php";
 
 $new = new Router();
 $new->run()  ;
+
+
+// $pattern = "/^\/post\/(?<slug>[-%\w+]+)$/";
+
+// $route = "/post/{archive}/gallery/{category-id}/526";
+
+// // $result = preg  _match($pattern,$route);
+
+// var_dump($route);
+// // var_dump($route);
+// var_dump($route_pattern);

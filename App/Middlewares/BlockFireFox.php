@@ -9,7 +9,7 @@ class BlockFireFox implements MiddlewareInterface {
 
     public function handle()
     {    
-        // echo"BlockFireFox"."<br>";
-        Browser::isFirefox() ? die('Firefox was Blocked ! use another IDE') : null ;
+        echo"BlockFireFox"."<br>";
+        // Browser::isFirefox() ? die('Firefox was Blocked ! use another IDE') : null ;
     }
 }
