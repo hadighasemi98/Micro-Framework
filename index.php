@@ -34,8 +34,8 @@ include "Bootstrap/init.php";
 $new = new Router();
 $new->run()  ;
 
-// $new = new User();
-// $r = $new->get(['name'] , []);
+// $new = new Product();
+// $r = $new->find(3);
 // var_dump($r);
 
 

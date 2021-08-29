@@ -69,16 +69,18 @@ class MysqlModel extends BaseModel  {
     }
 
     # Update
-    public function update (array $columns , array $where) : int
+    public function update (array $data , array $where) : int
     {
-        return 1;
+        $result = $this->connection->update($this->table, $data, $where);
+        return $result->rowCount() ;
 
     }
     
     # Delete
     public function delete (array $where) : int
     {
-        return 1;
+        $result = $this->connection->delete($this->table, $where);
+        return $result->rowCount() ;
     }
     
 }
