@@ -3,6 +3,8 @@
 use App\Core\Request;
 use App\Core\Routing\Router;
 use App\Core\Routing\Route;
+use App\Models\Product;
+use App\Models\User;
 
 include "Bootstrap/init.php";
 // echo $_SERVER['REQUEST_URI'];
@@ -31,6 +33,10 @@ include "Bootstrap/init.php";
 
 $new = new Router();
 $new->run()  ;
+
+// $new = new User();
+// $r = $new->get(['name'] , []);
+// var_dump($r);
 
 
 // $pattern = "/^\/post\/(?<slug>[-%\w+]+)$/";

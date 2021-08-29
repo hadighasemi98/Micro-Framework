@@ -9,7 +9,12 @@ use App\Middlewares\GlobalMiddleware;
 
 Route::get("/null"); 
 
-Route::get("/",function(){echo "Home"; }  )  ; 
+Route::get("/","HomeController@index" )  ; 
+Route::get("/home" ,"HomeController@index"); 
+
+Route::get("/blue" ,"BlueController@index" ); 
+
+Route::put("/last-posts" ,"LastsController@get" ); 
 
 // Route::get("/post/{archive}/gallery/{category-id}/526" ,"PostController@get" )  ; 
 Route::get("/post/{slug}" ,"PostController@get" ) ; 
@@ -20,8 +25,4 @@ Route::post("/product/{mobile}/comments/{Cid}" ,"PostController@pro" )  ;
 
 
 
-Route::post("/home" ,"HomeController@index", [BlockFireFox::class,BlockIE::class]); 
 
-Route::get("/blue" ,"BlueController@index" ); 
-
-Route::put("/last-posts" ,"LastsController@get" ); 
