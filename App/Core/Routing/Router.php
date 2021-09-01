@@ -45,7 +45,6 @@ class Router {
     
     public function findRoute(Request $request)
     {
-        // echo $request->get_uri() . "-" . $request->get_method();
 
         foreach($this->routes as $route){
 
@@ -74,8 +73,6 @@ class Router {
                 $this->request->add_route_param($key , $value); 
              }
          }
-        // $this->request->hadi = "hadi";
-        // var_dump($this->request->slug );
 
         return true ;
      }

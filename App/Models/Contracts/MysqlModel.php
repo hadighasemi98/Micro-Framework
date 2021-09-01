@@ -6,13 +6,14 @@ use Medoo\Medoo;
 
 class MysqlModel extends BaseModel  {
 
-    public function __construct()
+    // protected $pdo ;
+    public function __construct($id = null)
     {
-    //     try {
-    //         $this->connection = new \PDO("mysql:dbname={$_ENV["DB_name"]};host={$_ENV["DB_host"]}",$_ENV["DB_userName"],$_ENV["DB_userPass"]);
-    //     } catch (\PDOException $e) {
-    //         echo "Connection Failed : " . $e->getMessage();
-    //     }
+        // try {
+        //     $this->pdo = new \PDO("mysql:dbname={$_ENV["DB_name"]};host={$_ENV["DB_host"]}",$_ENV["DB_userName"],$_ENV["DB_userPass"]);
+        // } catch (\PDOException $e) {
+        //     echo "Connection Failed : " . $e->getMessage();
+        // }
 
     $this->connection = new Medoo([
         // [required]
@@ -42,6 +43,9 @@ class MysqlModel extends BaseModel  {
         ]
     ]);
 
+        if(!is_null($id))
+           return $this->find($id);
+
     }
 
     # Create (Insert)
@@ -54,8 +58,12 @@ class MysqlModel extends BaseModel  {
     # Read
     public function find ($id) : object
     {
-        $result = $this->connection-> get($this->table,'*', [$this->primary_key => $id]);
-        return (object)$result ;
+        $sql = $this->connection-> get($this->table,'*', [$this->primary_key => $id]);
+
+        foreach ($sql as $col => $val) {
+            $this->attributes[$col] = $val;
+        }
+        return $this ;
     }
 
     public function get (array $columns , array $where) : array
@@ -65,22 +73,23 @@ class MysqlModel extends BaseModel  {
 
     public function get_all () : array
     {
-        return $this->connection->select($this->table, '*') ;
+        return  $this->connection->select($this->table, '*') ;
+
     }
 
     # Update
     public function update (array $data , array $where) : int
     {
-        $result = $this->connection->update($this->table, $data, $where);
-        return $result->rowCount() ;
+        $sql = $this->connection->update($this->table, $data, $where);
+        return $sql->rowCount() ;
 
     }
     
     # Delete
     public function delete (array $where) : int
     {
-        $result = $this->connection->delete($this->table, $where);
-        return $result->rowCount() ;
+        $sql = $this->connection->delete($this->table, $where);
+        return $sql->rowCount() ;
     }
     
 }

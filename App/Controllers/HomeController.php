@@ -8,16 +8,12 @@ class HomeController{
 
     public function index()
     {
-         var_dump((new User())->get(["name"],["id"=>1]));
-        // $name = ;
-        // var_dump($name);
         $data = [
             "title" => "Home page" ,
-            "FirstPost" => "Hello world 2!" ,
-            // "autherName" => $name 
+            "FirstPost" => "Hello world 2!" 
         ];      
 
-        view("html/index",$data);
+        view("html/index",$data); 
     }
     
 }

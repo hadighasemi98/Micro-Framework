@@ -7,7 +7,6 @@
     <title><?= $title ?></title>
 </head>
 <body>
-    
-        <?= $FirstPost . '<br>' ?>
+    <?= $FirstPost ?>
 </body>
 </html>
