@@ -5,7 +5,7 @@
   <h3 align="center"> Micro-Framework - OOP MVC </h3>
 </div>
   <p align="center">
-    Inspaired Laravel !
+    inspired Laravel !
     
     
   </p>
