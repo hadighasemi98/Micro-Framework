@@ -23,6 +23,7 @@ This is a Micro-Framework created using the PHP and MVC . It allows you to creat
 * Routing system
 * Request system
 * Including system for Html files
+* Easy to change database
 
 -----
 <!-- GETTING STARTED -->
