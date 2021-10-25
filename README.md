@@ -25,6 +25,7 @@ This is a Micro-Framework created using the PHP and MVC . It allows you to creat
 * Including system for Html files
 * Easy to change database
 * ORM
+* Use Medoo query builder 
 
 -----
 <!-- GETTING STARTED -->
