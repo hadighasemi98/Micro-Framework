@@ -24,6 +24,7 @@ This is a Micro-Framework created using the PHP and MVC . It allows you to creat
 * Request system
 * Including system for Html files
 * Easy to change database
+* ORM
 
 -----
 <!-- GETTING STARTED -->
